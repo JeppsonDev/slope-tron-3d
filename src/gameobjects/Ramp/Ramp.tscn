@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/prefabs/ramp/ramp.tscn" type="PackedScene" id=1]
+
+[node name="Ramp" type="Spatial"]
+
+[node name="ramp" parent="." instance=ExtResource( 1 )]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/gameobjects/CubeFloor/CubeFloor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/gameobjects/ScifiCubeSlope1/ScifiCubeSlope1.tscn" type="PackedScene" id=2]
+
+[node name="CubeFloorSlope1" instance=ExtResource( 1 )]
+end_position = Vector3( 0, -200, -650 )
+
+[node name="ScifiCubeSlope1" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="MeshInstance" parent="." index="1"]
+transform = Transform( 16, 0, 0, 0, 32, -3.8147e-06, 0, -9.53674e-07, 64, 0.170013, 0.661423, -0.303035 )
+
+[node name="ScifiCube" parent="." index="2"]
+visible = false
+
+[node name="Spatial2" type="Spatial" parent="." index="5"]
+transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, -2.98023e-08, 1, 0, -226.492, -590.091 )

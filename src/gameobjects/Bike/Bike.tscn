@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/prefabs/bike/scifi_bike.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/gameobjects/Bike/Bike.gd" type="Script" id=2]
+
+[sub_resource type="SphereShape" id=1]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 1, 2.14272 )
+
+[node name="Bike" type="KinematicBody"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource( 2 )
+
+[node name="scifi_bike" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="FrontWheelRaycast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.736333, 0.676619, 0, -0.676619, 0.736333, 0, -0.564671, -1.72513 )
+enabled = true
+cast_to = Vector3( 0, -1.5, 0 )
+
+[node name="BackWheelRayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.866217, -0.499667, 0, 0.499667, 0.866217, -0.0052185, -0.484515, 1.62958 )
+enabled = true
+cast_to = Vector3( 0, -2, 0 )
+
+[node name="FloorDetector" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.414114, -0.746068 )
+enabled = true
+
+[node name="InteractionHitbox" type="Area" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="InteractionHitbox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.471636 )
+shape = SubResource( 2 )
