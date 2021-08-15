@@ -1,0 +1,118 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://src/prefabs/speedboost/SpeedBoost.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/textures/grid.png" type="Texture" id=2]
+[ext_resource path="res://src/GameScene/GameWorld.gd" type="Script" id=3]
+[ext_resource path="res://src/GameScene/UI.gd" type="Script" id=4]
+[ext_resource path="res://src/GameScene/GameScene.gd" type="Script" id=5]
+[ext_resource path="res://src/gameobjects/Bike/Bike.tscn" type="PackedScene" id=6]
+[ext_resource path="res://common/ThirdPersonFollowCamera/ThirdPersonFollowCamera.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/gameobjects/Floor/Floor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/gameobjects/ScifiCubeLong/scifi_cube_slope_long.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/fonts/SF Distant Galaxy.ttf" type="DynamicFontData" id=10]
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 10 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+albedo_color = Color( 1, 0.32549, 0.701961, 1 )
+albedo_texture = ExtResource( 2 )
+
+[node name="GameScene" type="Node"]
+script = ExtResource( 5 )
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeedLabel" type="Label" parent="UI/VBoxContainer"]
+margin_right = 128.0
+margin_bottom = 14.0
+text = "Speed: 00000000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaxSpeedLabel" type="Label" parent="UI/VBoxContainer"]
+margin_top = 18.0
+margin_right = 128.0
+margin_bottom = 32.0
+text = "Max Speed: 00000"
+
+[node name="Acceleration" type="Label" parent="UI/VBoxContainer"]
+margin_top = 36.0
+margin_right = 128.0
+margin_bottom = 50.0
+text = "Acceleration: 00000"
+
+[node name="Score" type="Label" parent="UI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -24.0
+margin_right = 24.0
+margin_bottom = 65.0
+custom_fonts/font = SubResource( 3 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameWorld" type="Spatial" parent="."]
+script = ExtResource( 3 )
+
+[node name="FirstPlatformSpawnPosition" type="Spatial" parent="GameWorld"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.73298, -106.585 )
+
+[node name="ThirdPersonFollowCamera" parent="GameWorld" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 0.968427, 0.249298, 0, -0.249298, 0.968427, 0, 5.32239, 2.32778 )
+__following_path = NodePath("../Bike")
+
+[node name="Bike" parent="GameWorld" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 322.55, 335.469 )
+
+[node name="Camera" type="Camera" parent="GameWorld"]
+transform = Transform( 1, 0, 0, 0, 0.940437, 0.339969, 0, -0.339969, 0.940437, 0, 6.00583, 9.45891 )
+visible = false
+
+[node name="Floor" parent="GameWorld" instance=ExtResource( 8 )]
+transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 70, 0.0274811, -0.536899, -53.8084 )
+visible = false
+material/0 = SubResource( 2 )
+
+[node name="SpeedBoost" parent="GameWorld" instance=ExtResource( 1 )]
+transform = Transform( -1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, -18.1579, 0, 1.78708 )
+visible = false
+
+[node name="SpeedBoost2" parent="GameWorld" instance=ExtResource( 1 )]
+transform = Transform( -1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, 1.68281, 0, 1.78708 )
+visible = false
+
+[node name="SpeedBoost3" parent="GameWorld" instance=ExtResource( 1 )]
+transform = Transform( -1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, 20.8083, 0, 1.78708 )
+visible = false
+
+[node name="DirectionalLight" type="DirectionalLight" parent="GameWorld"]
+transform = Transform( -2.18557e-08, 0.866025, -0.5, 3.78552e-08, 0.5, 0.866025, 1, 1.77636e-15, -4.37114e-08, -33.2285, 42.8366, 0 )
+light_color = Color( 0.74902, 0.74902, 0.74902, 1 )
+light_energy = 0.5
+shadow_enabled = true
+shadow_color = Color( 0.65098, 0.65098, 0.65098, 1 )
+
+[node name="scifi_cube_slope_long" parent="GameWorld" instance=ExtResource( 9 )]
+transform = Transform( -4, 0, -6.03983e-07, 0, 4, 0, 6.03983e-07, 0, -4, 0, 314.945, 336.904 )

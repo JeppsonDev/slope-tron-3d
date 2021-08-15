@@ -16,3 +16,7 @@ visible = false
 
 [node name="Spatial2" type="Spatial" parent="." index="5"]
 transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, -2.98023e-08, 1, 0, -226.492, -590.091 )
+
+[node name="ScoreZone" parent="." index="6"]
+transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, -2.98023e-08, 1, -27.5813, 54.8147, -451.244 )
+[connection signal="body_entered" from="ScoreZone" to="." method="__on_player_entered_scorezone"]

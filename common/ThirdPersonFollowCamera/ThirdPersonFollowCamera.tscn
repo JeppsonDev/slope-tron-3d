@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://common/ThirdPersonFollowCamera/ThirdPersonFollowCamera.gd" type="Script" id=1]
+[ext_resource path="res://src/gameobjects/WarpDriveVfx/WarpDriveVfx.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -11,7 +12,10 @@ script = ExtResource( 1 )
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 9.601, 16.885 )
 current = true
-far = 250.0
+far = 750.0
+
+[node name="WarpDriveVfx" parent="Camera" instance=ExtResource( 2 )]
+transform = Transform( 0.999485, -0.0305653, -0.00975222, 0.0063764, -0.108658, 0.994059, -0.0314434, -0.993609, -0.108407, 0, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 visible = false

@@ -1,14 +1,18 @@
 extends KinematicBody
 class_name Bike
 
+# Signals
+signal speedup();
+
 # Constants
 const LEAN:float = 1.75;
 const ACCELERATION:float = 2.0;
 const DEACCELERATION:float = 0.5;
-const STEER_SPEED:float = 0.05;
+const STEER_SPEED:float = 0.08;
 const FALLDOWN:float = 5.0;
 const NORM_SPEED:float = 1000.0
 const SPEED_INCREASE:float = 2.5;
+const SPEEDBOOST_DECREASE:float = 7.5;
 
 # Private Onready
 onready var __scifi_bike:Spatial = get_node("scifi_bike");
@@ -23,11 +27,13 @@ var __gravity:Vector3 = Vector3();
 var __gravity_acceleration:float = 0;
 var __acceleration:float = 0;
 var __max_acceleration:float = 1;
-var __speed:float = 1000.0;
-var __max_speed:float = 2500.0;
 var __steer:float = 0;
 var __in_air:bool = false;
 var __has_started:bool = false;
+
+# Public Fields
+var speed:float = 1000.0;
+var max_speed:float = 2500.0;
 
 func __align_with_y(xform:Transform, new_y:Vector3)->Transform:
 	xform.basis.y = new_y;
@@ -37,8 +43,10 @@ func __align_with_y(xform:Transform, new_y:Vector3)->Transform:
 
 func __on_area_enter(area:Area)->void:
 	if(area.is_in_group("speedboost")):
-		__max_speed += 1000;
-		__speed += 500;
+		max_speed += 200;
+		speed += 1000;
+		emit_signal("speedup")
+		
 
 func _ready()->void:
 	assert(__scifi_bike);
@@ -78,23 +86,25 @@ func _physics_process(delta)->void:
 			__acceleration -= DEACCELERATION * delta;
 			
 		if(__acceleration > __max_acceleration):
-			if(__speed < __max_speed):
-				__speed += SPEED_INCREASE;
-				
-		if(__in_air):
-			if(__acceleration > 0.7):
-				__acceleration -= 0.4 * delta;
+			if(speed < max_speed):
+				speed += SPEED_INCREASE;
 			else:
-				__acceleration = 0.7;
-			if(__speed > NORM_SPEED):
-				__speed -= SPEED_INCREASE;
+				speed -= SPEEDBOOST_DECREASE;
+				
+#		if(__in_air):
+#			if(__acceleration > 0.7):
+#				__acceleration -= 0.4 * delta;
+#			else:
+#				__acceleration = 0.7;
+#			if(__speed > NORM_SPEED):
+#				__speed -= SPEED_INCREASE;
 	else:
 		if(__acceleration > 0):
 			__acceleration -= 0.25 * delta;
 		else:
 			__acceleration = 0;
-		if(__speed > NORM_SPEED):
-			__speed -= SPEED_INCREASE;
+		if(speed > NORM_SPEED):
+			speed -= SPEED_INCREASE;
 		
 	if(Input.is_action_pressed("right")):
 		if(__steer > -1):
@@ -165,6 +175,6 @@ func _physics_process(delta)->void:
 				__gravity += (-global_transform.basis.z.normalized() * -slope.rotation_degrees.x)/360;
 				
 	move_and_slide_with_snap(__gravity, Vector3.DOWN*2, Vector3.UP, true);
-	move_and_slide_with_snap(__direction * __acceleration * __speed * delta, Vector3.DOWN*2, Vector3.UP, true);
-	__scifi_bike.spin_wheel_front(__acceleration*20);
-	__scifi_bike.spin_wheel_back(__acceleration*20);
+	move_and_slide_with_snap(__direction * __acceleration * speed * delta, Vector3.DOWN*2, Vector3.UP, true);
+	__scifi_bike.spin_wheel_front(__acceleration*speed/100);
+	__scifi_bike.spin_wheel_back(__acceleration*speed/100);

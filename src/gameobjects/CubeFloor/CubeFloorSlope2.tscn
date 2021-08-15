@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/gameobjects/CubeFloor/CubeFloor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/prefabs/speedboost/SpeedBoost.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/gameobjects/ScifiCubeSlope3/ScifiCubeSlope3.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/gameobjects/Ramp/Ramp.tscn" type="PackedScene" id=4]
+
+[node name="CubeFloorSlope2" instance=ExtResource( 1 )]
+start_position = Vector3( 0, 84, 123.96 )
+end_position = Vector3( 0, -146.328, -527.038 )
+
+[node name="ScifiCubeSlope3" parent="." index="0" instance=ExtResource( 3 )]
+transform = Transform( 16, 0, 0, 0, 32, 0, 0, 0, 12, 0, 0.268, 46.755 )
+
+[node name="SpeedBoost" parent="." index="1" instance=ExtResource( 2 )]
+transform = Transform( -0.39314, -0.00670089, -2.06254, -0.0429636, 1.50299, 0.0108774, 0.963464, -0.0404191, -0.730228, 43.7936, 32.3845, -59.9018 )
+
+[node name="SpeedBoost2" parent="." index="2" instance=ExtResource( 2 )]
+transform = Transform( -0.185927, -0.036387, -2.19572, -0.057503, 1.50305, -0.0137974, 0.990427, -0.0313664, -0.530239, 66.2678, 32.5293, -119.303 )
+
+[node name="SpeedBoost3" parent="." index="3" instance=ExtResource( 2 )]
+transform = Transform( 0.551502, -0.059264, -2.30761, -0.0580947, 1.50291, -0.021671, 0.927957, -0.0141628, 0.23891, 37.8361, 32.2577, -314.034 )
+
+[node name="Ramp" parent="." index="4" instance=ExtResource( 4 )]
+transform = Transform( -1.73851e-06, 0, -6.21387, 0, 4.13439, 5.68434e-14, 10.6709, 0, -1.01237e-06, 8.05794, 35.55, -384.004 )
+
+[node name="ScifiCube" parent="." index="6"]
+visible = false
+
+[node name="Spatial2" type="Spatial" parent="." index="9"]
+transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, -2.98023e-08, 1, 0, -11.328, -432.038 )
+
+[node name="ScoreZone" parent="." index="10"]
+transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, -2.98023e-08, 1, -32.8182, 27.3065, -321.061 )
+[connection signal="body_entered" from="ScoreZone" to="." method="__on_player_entered_scorezone"]

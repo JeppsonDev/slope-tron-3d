@@ -38,5 +38,5 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionHitbox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.471636 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.405159, -0.0969195, 0.746234 )
 shape = SubResource( 2 )
