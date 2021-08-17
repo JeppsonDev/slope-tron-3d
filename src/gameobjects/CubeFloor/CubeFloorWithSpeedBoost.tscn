@@ -11,5 +11,5 @@ transform = Transform( -1.09278e-07, 0, -2.5, -1.19209e-07, 2.5, 1.42109e-14, 2.
 [node name="SpeedBoost2" parent="." index="3" instance=ExtResource( 1 )]
 transform = Transform( -1.09278e-07, 0, -2.5, -1.19209e-07, 2.5, 1.42109e-14, 2.5, 2.98023e-08, -1.09278e-07, 0, 32.6417, -25.5331 )
 
-[node name="ScoreZone" parent="." index="6"]
+[node name="ScoreZone" parent="." index="5"]
 transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0 )

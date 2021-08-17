@@ -24,12 +24,15 @@ transform = Transform( 0.551502, -0.059264, -2.30761, -0.0580947, 1.50291, -0.02
 [node name="Ramp" parent="." index="4" instance=ExtResource( 4 )]
 transform = Transform( -1.73851e-06, 0, -6.21387, 0, 4.13439, 5.68434e-14, 10.6709, 0, -1.01237e-06, 8.05794, 35.55, -384.004 )
 
-[node name="ScifiCube" parent="." index="6"]
+[node name="ScifiCube" parent="." index="5"]
+transform = Transform( 16, 0, 0, 0, 32, 0, 0, -9.53674e-07, 64, 716.962, 0.661, -0.303 )
 visible = false
+
+[node name="FloorEnterArea" parent="." index="6"]
+transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, -2.98023e-08, 1, 3.79803, 28.8324, -358.764 )
+
+[node name="ScoreZone" parent="." index="8"]
+transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, -2.98023e-08, 1, -32.8182, 27.3065, -321.061 )
 
 [node name="Spatial2" type="Spatial" parent="." index="9"]
 transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, -2.98023e-08, 1, 0, -11.328, -432.038 )
-
-[node name="ScoreZone" parent="." index="10"]
-transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, -2.98023e-08, 1, -32.8182, 27.3065, -321.061 )
-[connection signal="body_entered" from="ScoreZone" to="." method="__on_player_entered_scorezone"]

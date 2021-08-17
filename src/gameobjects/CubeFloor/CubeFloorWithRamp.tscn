@@ -8,5 +8,5 @@
 [node name="Ramp" parent="." index="1" instance=ExtResource( 1 )]
 transform = Transform( -6.99382e-07, 0, -7, -4.76837e-07, 8, 2.84217e-14, 16, -2.38419e-07, -3.0598e-07, -8.55953, 33.6427, -47.2965 )
 
-[node name="ScoreZone" parent="." index="5"]
+[node name="ScoreZone" parent="." index="4"]
 transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0 )
