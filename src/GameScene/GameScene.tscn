@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/prefabs/speedboost/SpeedBoost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/grid.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://src/gameobjects/Floor/Floor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/gameobjects/ScifiCubeLong/scifi_cube_slope_long.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/fonts/SF Distant Galaxy.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://common/SceneTransitionSlide/SceneTransitionSlide.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -73,6 +74,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SceneTransition" parent="UI" instance=ExtResource( 11 )]
+
 [node name="GameWorld" type="Spatial" parent="."]
 script = ExtResource( 3 )
 
@@ -84,7 +87,7 @@ transform = Transform( 1, 0, 0, 0, 0.968427, 0.249298, 0, -0.249298, 0.968427, 0
 __following_path = NodePath("../Bike")
 
 [node name="Bike" parent="GameWorld" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 322.55, 335.469 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 322.55, 326.092 )
 
 [node name="Camera" type="Camera" parent="GameWorld"]
 transform = Transform( 1, 0, 0, 0, 0.940437, 0.339969, 0, -0.339969, 0.940437, 0, 6.00583, 9.45891 )

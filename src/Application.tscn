@@ -8,4 +8,4 @@
 [node name="WorldEnvironment" parent="." instance=ExtResource( 2 )]
 
 [node name="SceneManager" parent="." instance=ExtResource( 1 )]
-__scene_paths = [ "res://src/GameScene/GameScene.tscn" ]
+__scene_paths = [ "res://src/MainMenu/MainMenu.tscn", "res://src/GameScene/GameScene.tscn" ]
