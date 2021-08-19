@@ -5,3 +5,6 @@
 
 [node name="scifi_bike" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="WheelBack" parent="." index="0"]
+transform = Transform( 0.271962, 0, 0, 0, 0.415853, 0, 0, 0, 0.415853, -0.00719213, -0.111977, 1.62452 )

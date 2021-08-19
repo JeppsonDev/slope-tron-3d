@@ -82,6 +82,7 @@ func __spawn_floor(previous_floor_position:Vector3)->PlatformBase:
 	add_child(instance);
 	instance.global_transform.origin = previous_floor_position - instance.start_position;
 	instance.floor_enter_area.connect("body_entered", self, "__on_player_entered");
+	instance.restart_zone.connect("body_entered", self, "__on_player_entered_restartzone");
 	instance.connect("passed_end_area", self, "__on_player_exited");
 	__previous_floor = instance;
 	__previous_floor_index = floor_index
@@ -113,7 +114,15 @@ func __dequeue_floors()->void:
 	
 func __on_player_entered(body)->void:
 	__spawn_floors(4);
-	pass
+	
+func __on_player_entered_restartzone(body):
+	var highscore = Application.save_game.get_value("highscore");
+	
+	if(highscore < __score):
+		Application.save_game.set_value("highscore", __score);
+		Application.save_game.save_game();
+	
+	Application.scene_manager.current_scene.change_scene_data(1, {trans_in=false})
 	
 func __on_player_exited()->void:
 	__score = __score + 1;

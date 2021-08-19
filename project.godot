@@ -29,10 +29,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/GameScene/GameWorld.gd"
 }, {
+"base": "TextureButton",
+"class": "MenuButtonBase",
+"language": "GDScript",
+"path": "res://src/MainMenu/MenuButtonBase.gd"
+}, {
 "base": "Spatial",
 "class": "PlatformBase",
 "language": "GDScript",
 "path": "res://src/gameobjects/CubeFloor/PlatformBase.gd.gd"
+}, {
+"base": "Node",
+"class": "SaveGame",
+"language": "GDScript",
+"path": "res://common/SaveGame/SaveGame.gd"
 }, {
 "base": "Node",
 "class": "Scene",
@@ -69,7 +79,9 @@ _global_script_class_icons={
 "CollisionShapeRenderer": "",
 "GameScene": "",
 "GameWorld": "",
+"MenuButtonBase": "",
 "PlatformBase": "",
+"SaveGame": "",
 "Scene": "",
 "SceneManager": "",
 "SceneTransitionSlide": "",
@@ -81,12 +93,13 @@ _global_script_class_icons={
 [application]
 
 config/name="SlopeTron3D"
-run/main_scene="res://src/Application.tscn"
+run/main_scene="res://ProgramEntryPoint.tscn"
 config/icon="res://default/icon.png"
 
 [autoload]
 
 ConfigurationWarning="*res://common/ConfigurationWarning/ConfigurationWarning.gd"
+Application="*res://src/Application.tscn"
 
 [display]
 
@@ -94,7 +107,6 @@ window/size/width=1920
 window/size/height=1080
 window/size/test_width=960
 window/size/test_height=540
-window/vsync/use_vsync=false
 
 [input]
 
@@ -135,4 +147,5 @@ quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_clear_color=Color( 0, 0, 0, 1 )
+quality/filters/msaa=3
 environment/default_environment="res://default/default_env.tres"

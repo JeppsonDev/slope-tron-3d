@@ -5,14 +5,17 @@ class_name Bike
 signal speedup();
 
 # Constants
-const LEAN:float = 1.75;
+const LEAN:float = 2.5;
 const ACCELERATION:float = 2.0;
 const DEACCELERATION:float = 0.5;
 const STEER_SPEED:float = 0.08;
 const FALLDOWN:float = 5.0;
 const NORM_SPEED:float = 1000.0
-const SPEED_INCREASE:float = 2.5;
+const SPEED_INCREASE:float = 4.5;
 const SPEEDBOOST_DECREASE:float = 7.5;
+
+# Private Exports
+export(Material) var __mat;
 
 # Private Onready
 onready var __scifi_bike:Spatial = get_node("scifi_bike");
@@ -20,6 +23,9 @@ onready var __frontwheelraycast:RayCast = get_node("FrontWheelRaycast");
 onready var __backwheelraycast:RayCast = get_node("BackWheelRayCast");
 onready var __floordetector:RayCast = get_node("FloorDetector");
 onready var __interaction_hitbox:Area = get_node("InteractionHitbox");
+onready var __speedboost:AudioStreamPlayer = get_node("SpeedBoost");
+onready var __tiresqueal:AudioStreamPlayer = get_node("TireSqueal");
+onready var __thump:AudioStreamPlayer = get_node("Thump");
 
 # Private Fields
 var __direction:Vector3 = Vector3();
@@ -30,6 +36,8 @@ var __max_acceleration:float = 1;
 var __steer:float = 0;
 var __in_air:bool = false;
 var __has_started:bool = false;
+
+var __left:bool = false;
 
 # Public Fields
 var speed:float = 1000.0;
@@ -46,6 +54,7 @@ func __on_area_enter(area:Area)->void:
 		max_speed += 200;
 		speed += 1000;
 		emit_signal("speedup")
+		__speedboost.play();
 		
 
 func _ready()->void:
@@ -56,6 +65,14 @@ func _ready()->void:
 	assert(__interaction_hitbox);
 	
 	__interaction_hitbox.connect("area_entered", self, "__on_area_enter");
+	
+	__mat.albedo_color.r = Application.save_game.get_value("bike_albedo_r");
+	__mat.albedo_color.g = Application.save_game.get_value("bike_albedo_g");
+	__mat.albedo_color.b = Application.save_game.get_value("bike_albedo_b");
+	
+	__mat.emission.r = Application.save_game.get_value("bike_emission_r");
+	__mat.emission.g = Application.save_game.get_value("bike_emission_g");
+	__mat.emission.b = Application.save_game.get_value("bike_emission_b");
 
 func _process(delta)->void:
 	if(Input.is_action_pressed("up")):
@@ -75,7 +92,7 @@ func _physics_process(delta)->void:
 	
 	if(Input.is_action_pressed("down")):
 		#__direction += global_transform.basis.z;
-		__acceleration -= 0.01 * delta;
+		__acceleration -= 0.1 * delta;
 		should_accelerate = false;
 		
 	if(should_accelerate):
@@ -107,6 +124,12 @@ func _physics_process(delta)->void:
 			speed -= SPEED_INCREASE;
 		
 	if(Input.is_action_pressed("right")):
+		
+		if(__left and __steer >= 0.25):
+			__tiresqueal.play();
+			
+		__left = false;
+		
 		if(__steer > -1):
 			__steer -= STEER_SPEED;
 			
@@ -120,6 +143,12 @@ func _physics_process(delta)->void:
 		__max_acceleration = 1;
 		
 	if(Input.is_action_pressed("left")):
+		
+		if(!__left and __steer <= -0.25):
+			__tiresqueal.play();
+			
+		__left = true;
+		
 		if(__steer < 1):
 			__steer += STEER_SPEED;
 			
@@ -158,6 +187,8 @@ func _physics_process(delta)->void:
 		if(__gravity_acceleration < 1):
 			__gravity_acceleration += 0.01;
 	else:
+		if(__in_air and __gravity_acceleration >= 0.5):
+			__thump.play();
 		__gravity_acceleration = 0;
 		__in_air = false;
 		

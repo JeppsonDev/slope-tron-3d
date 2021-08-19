@@ -1,11 +1,24 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://common/SceneManager/SceneManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/WorldEnvironment.tscn" type="PackedScene" id=2]
+[ext_resource path="res://common/SaveGame/SaveGame.gd" type="Script" id=3]
+[ext_resource path="res://src/Application.gd" type="Script" id=4]
+[ext_resource path="res://assets/sound/exodus.wav" type="AudioStream" id=5]
 
 [node name="Application" type="Node"]
+script = ExtResource( 4 )
 
 [node name="WorldEnvironment" parent="." instance=ExtResource( 2 )]
 
+[node name="SaveGame" type="Node" parent="."]
+script = ExtResource( 3 )
+
 [node name="SceneManager" parent="." instance=ExtResource( 1 )]
 __scene_paths = [ "res://src/MainMenu/MainMenu.tscn", "res://src/GameScene/GameScene.tscn" ]
+
+[node name="MainMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -9.0
+pitch_scale = 0.6
+autoplay = true

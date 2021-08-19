@@ -16,7 +16,7 @@
 size = 64
 font_data = ExtResource( 10 )
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=3]
 flags_transparent = true
 albedo_color = Color( 1, 0.32549, 0.701961, 1 )
 albedo_texture = ExtResource( 2 )
@@ -64,8 +64,9 @@ text = "Acceleration: 00000"
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -24.0
+margin_top = 10.0
 margin_right = 24.0
-margin_bottom = 65.0
+margin_bottom = 75.0
 custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1
@@ -75,6 +76,8 @@ __meta__ = {
 }
 
 [node name="SceneTransition" parent="UI" instance=ExtResource( 11 )]
+margin_left = 3.00323
+margin_right = 3.00317
 
 [node name="GameWorld" type="Spatial" parent="."]
 script = ExtResource( 3 )
@@ -96,7 +99,7 @@ visible = false
 [node name="Floor" parent="GameWorld" instance=ExtResource( 8 )]
 transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 70, 0.0274811, 1.59785, -13.3701 )
 visible = false
-material/0 = SubResource( 2 )
+material/0 = SubResource( 3 )
 
 [node name="SpeedBoost" parent="GameWorld" instance=ExtResource( 1 )]
 transform = Transform( -1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, -18.1579, 0, 1.78708 )
@@ -111,8 +114,7 @@ transform = Transform( -1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, 2
 visible = false
 
 [node name="DirectionalLight" type="DirectionalLight" parent="GameWorld"]
-transform = Transform( -2.18557e-08, 0.866025, -0.5, 3.78552e-08, 0.5, 0.866025, 1, 1.77636e-15, -4.37114e-08, -33.2285, 42.8366, 0 )
-light_color = Color( 0.74902, 0.74902, 0.74902, 1 )
+transform = Transform( -2.18557e-08, 0.866025, -0.5, 3.78552e-08, 0.5, 0.866025, 1, -1.95399e-14, -4.37114e-08, -34.3763, 41.2741, 0.73999 )
 light_energy = 0.5
 shadow_enabled = true
 shadow_color = Color( 0.65098, 0.65098, 0.65098, 1 )

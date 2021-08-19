@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/prefabs/bike/scifi_bike.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/gameobjects/Bike/Bike.gd" type="Script" id=2]
+[ext_resource path="res://assets/models/bike/InnerRing.material" type="Material" id=3]
+[ext_resource path="res://assets/sound/speedboost.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sound/tirescreech.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sound/thump.wav" type="AudioStream" id=6]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -12,6 +16,7 @@ extents = Vector3( 1, 1, 2.14272 )
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 2 )
+__mat = ExtResource( 3 )
 
 [node name="scifi_bike" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
@@ -40,3 +45,15 @@ collision_mask = 4
 [node name="CollisionShape" type="CollisionShape" parent="InteractionHitbox"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.405159, -0.0969195, 0.746234 )
 shape = SubResource( 2 )
+
+[node name="SpeedBoost" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+pitch_scale = 1.5
+
+[node name="TireSqueal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -3.0
+
+[node name="Thump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -5.0

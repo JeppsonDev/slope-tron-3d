@@ -11,7 +11,7 @@
 extents = Vector3( 92.745, 67.3254, 9.532 )
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 566.971, 50, 431.679 )
+extents = Vector3( 800, 50, 800 )
 
 [node name="CubeFloor" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 0.951057, 0.463526, 0, -0.309017, 1.42658, 0, 0, 0 )
