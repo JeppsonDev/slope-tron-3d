@@ -1,5 +1,14 @@
 extends Scene
 
+func scene_ready()->void:
+	scene_data.trans_in=true;
+	if(scene_data.trans_in):
+		$UI/SceneTransition.show();
+		$UI/SceneTransition.transition_in();
+	pass
+	
+	Application.get_node("MainMusic").pitch_scale = 0.6;
+
 func _ready()->void:
 	$UI/SceneTransition.animation_player.connect("animation_finished", self, "__on_animation_finished");
 
@@ -13,7 +22,11 @@ func _ready()->void:
 	
 
 func _on_StartNextSceneTimer_timeout():
+	$UI/SceneTransition.show();
 	$UI/SceneTransition.transition_out();
 	
 func __on_animation_finished(anim)->void:
+	if(scene_data.trans_in):
+		scene_data.trans_in = false;
+		return;
 	change_scene_data(1, {trans_in=true});

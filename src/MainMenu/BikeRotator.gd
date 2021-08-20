@@ -40,6 +40,10 @@ func _on_TextureButton_pressed():
 	Application.save_game.set_value("bike_emission_g", __mat.emission.g)
 	Application.save_game.set_value("bike_emission_b", __mat.emission.b)
 	
+	Application.save_game.set_value("bus_master", AudioServer.get_bus_volume_db(0));
+	Application.save_game.set_value("bus_sfx", AudioServer.get_bus_volume_db(1));
+	Application.save_game.set_value("bus_music", AudioServer.get_bus_volume_db(2));
+	
 	Application.save_game.save_game();
 	
 	$DriveAwayTimer.start();

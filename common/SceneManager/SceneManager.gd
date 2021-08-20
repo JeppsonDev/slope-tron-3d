@@ -9,7 +9,7 @@ var main_menu_scene = preload("res://src/MainMenu/MainMenu.tscn");
 var game_scene = preload("res://src/GameScene/GameScene.tscn");
 
 func _ready()->void:
-	__on_scene_change_scene(0, {});
+	__on_scene_change_scene(0, {trans_in=false});
 	
 func __load_scene(path:String, scene_data:Dictionary)->Scene:
 	#var scene:PackedScene = load(path);

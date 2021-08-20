@@ -75,7 +75,7 @@ func _ready()->void:
 	__mat.emission.b = Application.save_game.get_value("bike_emission_b");
 
 func _process(delta)->void:
-	if(Input.is_action_pressed("up")):
+	if(Input.is_action_pressed("up") or Input.is_action_pressed("down") or Input.is_action_pressed("right") or Input.is_action_pressed("left")):
 		__has_started = true;
 
 func _physics_process(delta)->void:
@@ -91,9 +91,13 @@ func _physics_process(delta)->void:
 	should_accelerate = true;
 	
 	if(Input.is_action_pressed("down")):
+		if(should_accelerate):
+			__tiresqueal.play();
 		#__direction += global_transform.basis.z;
 		__acceleration -= 0.1 * delta;
 		should_accelerate = false;
+	else:
+		__tiresqueal.stop();
 		
 	if(should_accelerate):
 		if(__acceleration < __max_acceleration and !__in_air):
@@ -124,9 +128,6 @@ func _physics_process(delta)->void:
 			speed -= SPEED_INCREASE;
 		
 	if(Input.is_action_pressed("right")):
-		
-		if(__left and __steer >= 0.25):
-			__tiresqueal.play();
 			
 		__left = false;
 		
@@ -143,9 +144,6 @@ func _physics_process(delta)->void:
 		__max_acceleration = 1;
 		
 	if(Input.is_action_pressed("left")):
-		
-		if(!__left and __steer <= -0.25):
-			__tiresqueal.play();
 			
 		__left = true;
 		

@@ -14,6 +14,8 @@ func _process(delta)->void:
 		rect_scale.y = 1;
 
 func __on_button_down()->void:
+	if(is_pressed):
+		return;
 	.__on_button_down();
 	Application.main_music.stop();
 	Application.main_music.play(0);

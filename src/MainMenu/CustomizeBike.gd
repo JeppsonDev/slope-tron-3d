@@ -11,12 +11,15 @@ func toggle_menu():
 	else:
 		show();
 		__is_showing = true;
+		
+func close_menu():
+	hide();
+	__is_showing = false;
 
 
 func _on_RedSlider_value_changed(value):
 	mat.albedo_color.r = float(value)/float(255);
 	mat.emission.r = float(value)/float(255);
-
 
 func _on_GreenSlider_value_changed(value):
 	mat.albedo_color.g = float(value)/float(255);

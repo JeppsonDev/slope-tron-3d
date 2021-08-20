@@ -11,8 +11,8 @@ func _ready()->void:
 	
 func transition_in():
 	#color = Color(255,255,255,255);
-	material.set_shader_param("_in", true);
-	animation_player.play("transition");
+	material.set_shader_param("_in", false);
+	animation_player.play_backwards("transition");
 	
 func transition_out():
 	#color = Color(255,255,255,255);

@@ -12,12 +12,22 @@ var __data:Dictionary = {
 	bike_albedo_b=1,
 	bike_emission_r=1,
 	bike_emission_g=1,
-	bike_emission_b=1
+	bike_emission_b=1,
+	bus_master=0,
+	bus_sfx=0,
+	bus_music=-10,
 };
 
 func _ready()->void:
+	
+	var file2Check = File.new();
+	var doFileExists = file2Check.file_exists(PATH);
+	
+	if(!doFileExists):
+		save_game();
+		
 	load_game();
-
+	
 func save_game()->void:
 	var file = File.new()
 	file.open(PATH, File.WRITE)

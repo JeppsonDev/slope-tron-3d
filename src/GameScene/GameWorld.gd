@@ -37,6 +37,7 @@ var __dequeue_floor_stack:Array;
 var __previous_floor_index:int = 0;
 var __platforms_went_through:int = 0;
 var __score:int = 0;
+var __dead=false;
 
 # Onready Public
 onready var bike:Bike = get_node("Bike");
@@ -116,13 +117,20 @@ func __on_player_entered(body)->void:
 	__spawn_floors(4);
 	
 func __on_player_entered_restartzone(body):
+	if(__dead):
+		return;
+	
+	__dead = true;
+	
 	var highscore = Application.save_game.get_value("highscore");
 	
 	if(highscore < __score):
 		Application.save_game.set_value("highscore", __score);
 		Application.save_game.save_game();
+		highscore = __score;
 	
-	Application.scene_manager.current_scene.change_scene_data(1, {trans_in=false})
+	Application.scene_manager.current_scene.ui.get_node("DeathScreen").show();
+	Application.scene_manager.current_scene.ui.get_node("DeathScreen").init(__score, highscore);
 	
 func __on_player_exited()->void:
 	__score = __score + 1;
