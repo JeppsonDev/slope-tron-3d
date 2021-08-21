@@ -15,3 +15,8 @@ func _process(delta)->void:
 	__speed_label.text = "Speed: " + str(get_owner().game_world.bike.speed);
 	__max_speed_label.text = "Max Speed: " + str(get_owner().game_world.bike.max_speed);
 	__acceleration_label.text = "Acceleration: " + str(get_owner().game_world.bike.__acceleration);
+	
+	if(Application.debug):
+		hide();
+	else:
+		show();

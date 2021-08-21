@@ -14,6 +14,9 @@ func _ready()->void:
 	__warpdrivevfx.stop();
 	
 func _process(delta)->void:
+	if(Application.debug):
+		return;
+	
 	global_transform.origin = __following.global_transform.origin;
 	rotation_degrees.y = __following.rotation_degrees.y;
 	rotation_degrees.x = lerp(rotation_degrees.x, __following.rotation_degrees.x, 4 * delta)

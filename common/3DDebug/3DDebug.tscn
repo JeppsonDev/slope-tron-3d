@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://common/3DDebug/3DDebug.gd" type="Script" id=1]
+
+[node name="3DDebug" type="Spatial"]
+script = ExtResource( 1 )

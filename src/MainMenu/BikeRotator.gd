@@ -5,6 +5,10 @@ var driveaway:bool = false;
 var speed:float = 100;
 var acceleration:float = 0;
 
+var dir1:int = 0;
+var dir2:int = 1;
+var dir3:int = 0;
+
 export(Material) var __mat;
 
 func _ready()->void:
@@ -16,9 +20,48 @@ func _ready()->void:
 	__mat.emission.g = Application.get_node("SaveGame").get_value("bike_emission_g");
 	__mat.emission.b = Application.get_node("SaveGame").get_value("bike_emission_b");
 	
+	__mat.albedo_color.r = 1
+	__mat.albedo_color.g = 0.5
+	__mat.albedo_color.b = 1
+	
+	
+	__mat.emission.r = 1
+	__mat.emission.g = 0.5
+	__mat.emission.b = 1
+	
+	
 	pass
 
 func _process(delta)->void:
+
+# ALL OF THIS IS FOR TWITTER
+	
+#	if(__mat.albedo_color.r <= 0.01):
+#		dir1 = 1;
+#	if(__mat.albedo_color.r >= 0.98):
+#		dir1 = 0;
+#
+#	__mat.albedo_color.r = lerp(__mat.albedo_color.r, dir1, delta*0.5);
+#	__mat.emission.r = lerp(__mat.albedo_color.r, dir1, delta*0.5);
+#
+#	if(__mat.albedo_color.g <= 0.01):
+#		dir2 = 1;
+#	if(__mat.albedo_color.g >= 0.98):
+#		dir2 = 0;
+#
+#	__mat.albedo_color.g = lerp(__mat.albedo_color.g, dir2, delta*1);
+#	__mat.emission.g = lerp(__mat.albedo_color.g, dir2, delta*1);
+#
+#	if(__mat.albedo_color.b <= 0.01):
+#		dir3 = 1;
+#	if(__mat.albedo_color.b >= 0.98):
+#		dir3 = 0;
+#
+#	__mat.albedo_color.b = lerp(__mat.albedo_color.b, dir3, delta*0.5);
+#	__mat.emission.b = lerp(__mat.albedo_color.b, dir3, delta*0.5);
+#
+#	print(__mat.albedo_color.g)
+	
 	if (!reset_rotation):
 		rotate_y(1*delta);
 	else:

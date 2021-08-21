@@ -79,6 +79,9 @@ func _process(delta)->void:
 		__has_started = true;
 
 func _physics_process(delta)->void:
+	if(Application.paused or Application.debug):
+		return;
+		
 	if(!__has_started):
 		return;
 		

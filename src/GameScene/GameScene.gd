@@ -24,9 +24,13 @@ func _process(delta):
 func _on_GoBack_pressed():
 	$UI/SceneTransition.show();
 	$UI/SceneTransition.transition_out();
+	Application.paused = false;
 
 func _on_Restart_pressed():
 	change_scene_data(1, {trans_in=false});
+	Application.main_music.stop();
+	Application.main_music.play(0);
+	Application.paused = false;
 
 func __on_animation_finished(anim)->void:
 	if(scene_data.trans_in):

@@ -2,18 +2,9 @@
 
 [ext_resource path="res://assets/fonts/SF Distant Galaxy.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/MainMenu/CustomizeBike.gd" type="Script" id=2]
+[ext_resource path="res://assets/models/bike/InnerRing_004.material" type="Material" id=3]
 
-[sub_resource type="SpatialMaterial" id=1]
-resource_name = "InnerRing"
-params_cull_mode = 2
-roughness = 0.0764706
-emission_enabled = true
-emission = Color( 1, 1, 1, 1 )
-emission_energy = 1.0
-emission_operator = 0
-emission_on_uv2 = false
-
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
 border_width_left = 8
 border_width_top = 8
@@ -25,11 +16,11 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 30
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 30
 font_data = ExtResource( 1 )
 
@@ -40,7 +31,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-mat = SubResource( 1 )
+mat = ExtResource( 3 )
 
 [node name="Panel" type="Panel" parent="."]
 anchor_left = 1.0
@@ -50,7 +41,7 @@ margin_left = -300.0
 margin_top = 100.0
 margin_right = 0.00012207
 margin_bottom = -9.99988
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -59,7 +50,7 @@ __meta__ = {
 anchor_right = 1.0
 margin_top = 20.0
 margin_bottom = 41.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Bike customs"
 align = 1
 valign = 1
@@ -87,7 +78,7 @@ custom_constants/separation = 10
 margin_top = 10.0
 margin_right = 24.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "R"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -115,7 +106,7 @@ custom_constants/separation = 10
 margin_top = 10.0
 margin_right = 23.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "G"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -143,7 +134,7 @@ custom_constants/separation = 10
 margin_top = 10.0
 margin_right = 23.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "B"
 __meta__ = {
 "_edit_use_anchors_": false
