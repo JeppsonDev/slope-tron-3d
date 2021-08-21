@@ -1,6 +1,8 @@
 extends Spatial
 class_name GameWorld
 
+signal score_increased(score);
+
 # Onready Private
 onready var __first_platform_spawn_position:Vector3 = get_node("FirstPlatformSpawnPosition").global_transform.origin;
 onready var __thirdPersonFollowCamera:ThirdPersonFollowCamera = get_node("ThirdPersonFollowCamera");
@@ -135,6 +137,7 @@ func __on_player_entered_restartzone(body):
 func __on_player_exited()->void:
 	__score = __score + 1;
 	get_owner().ui.score_label.text = str(__score);
+	emit_signal("score_increased", __score);
 
 func _ready()->void:
 	__spawn_floors(4);

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://src/prefabs/speedboost/SpeedBoost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/grid.png" type="Texture" id=2]
@@ -23,6 +23,8 @@
 [ext_resource path="res://src/GameScene/PauseScreen.gd" type="Script" id=21]
 [ext_resource path="res://common/3DDebug/3DDebug.tscn" type="PackedScene" id=22]
 [ext_resource path="res://common/LineMountains/LineMountains.tscn" type="PackedScene" id=23]
+[ext_resource path="res://src/GameScene/DirectionalLight.gd" type="Script" id=24]
+[ext_resource path="res://assets/resources/gradients/darkerthelongeryougo.tres" type="Gradient" id=25]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -629,7 +631,9 @@ visible = false
 transform = Transform( -2.18557e-08, 0.866025, -0.5, 3.78552e-08, 0.5, 0.866025, 1, -1.95399e-14, -4.37114e-08, -34.3763, 41.2741, 0.73999 )
 light_energy = 0.5
 shadow_enabled = true
-shadow_color = Color( 0.65098, 0.65098, 0.65098, 1 )
+shadow_color = Color( 0.513726, 0.513726, 0.513726, 1 )
+script = ExtResource( 24 )
+__gradient = ExtResource( 25 )
 
 [node name="scifi_cube_slope_long" parent="GameWorld" instance=ExtResource( 9 )]
 transform = Transform( -4, 0, -6.03983e-07, 0, 4, 0, 6.03983e-07, 0, -4, 0, 314.945, 336.904 )

@@ -3,12 +3,14 @@ class_name Scene
 
 # Signals
 signal change_scene(scene_id, data);
+signal scene_ready();
 
 # Public Variables
 var scene_id:int = 0; # This is initialized in SceneManager upon scene start
 var scene_data:Dictionary setget set_scene_data, get_scene_data;
 
 func scene_ready()->void:
+	emit_signal("scene_ready");
 	pass
 
 # Public Functions

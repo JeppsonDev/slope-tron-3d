@@ -8,7 +8,7 @@ onready var spectrum = AudioServer.get_bus_effect_instance(2, 0)
 
 var definition = 20
 var total_w = 400
-var total_h = 4 #200
+var total_h = 30 #200
 var min_freq = 20
 var max_freq = 20000
 
@@ -76,14 +76,22 @@ func __draw_horizontal_3d_visualizer()->void:
 #void draw_line(from: Vector2, to: Vector2, color: Color, width: float = 1.0, antialiased: bool = false)
 	#draw_line(Vector2(0, -total_h), Vector2(total_w, -total_h), Color.crimson, 2.0, true)
 
-	
+	var avgLoudness:float = 0;
 
 	for i in range(definition):
-		var loudness = abs(-histogram[i] * total_h)*10;
+		var loudness = abs(-histogram[i] * total_h);
 		
-		print(loudness)
+		avgLoudness += loudness;
 		
 		get_child(i).scale.y = loudness;
+		get_child(i).transform.origin.y = get_child(i).scale.y/2;
+		
+	avgLoudness = avgLoudness / definition*2;
+	
+	#print(avgLoudness)
+	
+	#Application.scene_manager.current_scene.get_node("GameWorld/DirectionalLight").light_energy = avgLoudness * 0.05;
+	#print(Application.scene_manager.current_scene.get_node("GameWorld/DirectionalLight").light_energy)
 		
 		#draw_line(draw_pos, draw_pos + Vector2(0, -histogram[i] * total_h), Color.crimson, 4.0, true)
 		#draw_pos.x += w_interval
