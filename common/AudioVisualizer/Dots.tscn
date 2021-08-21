@@ -5,8 +5,7 @@
 [sub_resource type="CubeMesh" id=1]
 
 [sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.7 )
-colors = PoolColorArray( 1, 0, 0, 0, 1, 1, 1, 1 )
+colors = PoolColorArray( 1, 0, 0, 0, 0, 0, 0, 1 )
 
 [sub_resource type="GradientTexture" id=4]
 gradient = SubResource( 3 )
@@ -20,6 +19,9 @@ emission = Color( 1, 1, 1, 1 )
 emission_energy = 5.0
 emission_operator = 0
 emission_on_uv2 = false
+distance_fade_mode = 1
+distance_fade_min_distance = 0.0
+distance_fade_max_distance = 10.0
 
 [node name="Dots" type="Spatial"]
 transform = Transform( 1, 1.6426e-11, 0, -2.44587e-11, 1, 7.27596e-12, -1.45519e-11, -7.27596e-12, 1, 0, 0, 0 )
