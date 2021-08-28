@@ -25,7 +25,7 @@
 size = 32
 font_data = ExtResource( 6 )
 
-[sub_resource type="ArrayMesh" id=4]
+[sub_resource type="ArrayMesh" id=2]
 resource_name = "Cube.007"
 surfaces/0 = {
 "aabb": AABB( -1.83256, -1.80496, -1.90689, 3.66512, 3.60993, 3.60992 ),
@@ -54,7 +54,7 @@ surfaces/1 = {
 "vertex_count": 612
 }
 
-[sub_resource type="ArrayMesh" id=5]
+[sub_resource type="ArrayMesh" id=3]
 resource_name = "Cube.003"
 surfaces/0 = {
 "aabb": AABB( -1.61086, -1.80099, -1.90292, 3.22171, 3.60198, 3.60198 ),
@@ -70,7 +70,7 @@ surfaces/0 = {
 "vertex_count": 108
 }
 
-[sub_resource type="ArrayMesh" id=6]
+[sub_resource type="ArrayMesh" id=4]
 resource_name = "Cube.005"
 surfaces/0 = {
 "aabb": AABB( -1.61086, -1.80099, -1.90292, 3.22171, 3.60198, 3.60198 ),
@@ -86,7 +86,7 @@ surfaces/0 = {
 "vertex_count": 108
 }
 
-[sub_resource type="ArrayMesh" id=7]
+[sub_resource type="ArrayMesh" id=5]
 resource_name = "Cube.002"
 surfaces/0 = {
 "aabb": AABB( -1.61086, -1.80099, -1.90292, 3.22171, 3.60198, 3.60198 ),
@@ -102,7 +102,7 @@ surfaces/0 = {
 "vertex_count": 108
 }
 
-[sub_resource type="ArrayMesh" id=8]
+[sub_resource type="ArrayMesh" id=6]
 resource_name = "Cube.001"
 surfaces/0 = {
 "aabb": AABB( -1.61086, -1.80099, -1.90292, 3.22171, 3.60198, 3.60198 ),
@@ -118,7 +118,7 @@ surfaces/0 = {
 "vertex_count": 108
 }
 
-[sub_resource type="ArrayMesh" id=9]
+[sub_resource type="ArrayMesh" id=7]
 resource_name = "Cube.011"
 surfaces/0 = {
 "aabb": AABB( -0.839506, -0.895269, -0.895269, 6.49942, 4.27448, 7.70822 ),
@@ -134,7 +134,7 @@ surfaces/0 = {
 "vertex_count": 113
 }
 
-[sub_resource type="ArrayMesh" id=10]
+[sub_resource type="ArrayMesh" id=8]
 resource_name = "Cube.010"
 surfaces/0 = {
 "aabb": AABB( -0.839506, -0.895269, -0.895269, 6.49942, 4.27448, 7.70822 ),
@@ -150,7 +150,7 @@ surfaces/0 = {
 "vertex_count": 113
 }
 
-[sub_resource type="ArrayMesh" id=11]
+[sub_resource type="ArrayMesh" id=9]
 resource_name = "Cube.009"
 surfaces/0 = {
 "aabb": AABB( -0.839506, -0.895269, -0.895269, 6.49942, 4.27448, 7.70822 ),
@@ -166,7 +166,7 @@ surfaces/0 = {
 "vertex_count": 113
 }
 
-[sub_resource type="ArrayMesh" id=12]
+[sub_resource type="ArrayMesh" id=10]
 resource_name = "Cube.008"
 surfaces/0 = {
 "aabb": AABB( -0.839506, -0.895269, -0.895269, 6.49942, 4.27448, 7.70822 ),
@@ -182,7 +182,7 @@ surfaces/0 = {
 "vertex_count": 113
 }
 
-[sub_resource type="ArrayMesh" id=13]
+[sub_resource type="ArrayMesh" id=11]
 resource_name = "Cube.004"
 surfaces/0 = {
 "aabb": AABB( -1.56407, -1.54052, -1.64245, 3.12815, 3.08104, 3.08104 ),
@@ -211,7 +211,7 @@ surfaces/1 = {
 "vertex_count": 612
 }
 
-[sub_resource type="ArrayMesh" id=14]
+[sub_resource type="ArrayMesh" id=12]
 resource_name = "Cube"
 surfaces/0 = {
 "aabb": AABB( -0.573462, -0.0496719, -2.09425, 1.14692, 1.30508, 4.3184 ),
@@ -240,9 +240,9 @@ surfaces/1 = {
 "vertex_count": 442
 }
 
-[sub_resource type="CubeMesh" id=15]
+[sub_resource type="CubeMesh" id=13]
 
-[sub_resource type="SpatialMaterial" id=16]
+[sub_resource type="SpatialMaterial" id=14]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource( 5 )
@@ -380,53 +380,53 @@ script = ExtResource( 8 )
 
 [node name="WheelBack" type="MeshInstance" parent="Bike/scifi_bike"]
 transform = Transform( 0.271962, 0, 0, 0, 0.415853, 0, 0, 0, 0.415853, -0.00719213, -0.111977, 1.62452 )
-mesh = SubResource( 4 )
+mesh = SubResource( 2 )
 material/0 = null
 material/1 = null
 
 [node name="WheelFront003" type="MeshInstance" parent="Bike/scifi_bike"]
 transform = Transform( -0.0128408, 0, 0, 0, 0.225135, 0, 0, 0, 0.225135, 0.426242, -0.199868, 1.63876 )
-mesh = SubResource( 5 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="WheelFront004" type="MeshInstance" parent="Bike/scifi_bike"]
 transform = Transform( -0.0151527, 0, 0, 0, 0.265667, 0, 0, 0, 0.265667, -0.403381, -0.199868, 1.63876 )
-mesh = SubResource( 6 )
+mesh = SubResource( 4 )
 material/0 = null
 
 [node name="WheelFront002" type="MeshInstance" parent="Bike/scifi_bike"]
 transform = Transform( -0.0103434, 0, 0, 0, 0.181348, 0, 0, 0, 0.181348, 0.345566, -0.317737, -1.45281 )
-mesh = SubResource( 7 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="WheelFront001" type="MeshInstance" parent="Bike/scifi_bike"]
 transform = Transform( -0.0122056, 0, 0, 0, 0.213998, 0, 0, 0, 0.213998, -0.322705, -0.317737, -1.45281 )
-mesh = SubResource( 8 )
+mesh = SubResource( 6 )
 material/0 = null
 
 [node name="WheelBackMetalDetail" type="MeshInstance" parent="Bike/scifi_bike"]
 transform = Transform( -0.135394, 0, 0, 0, 0.135394, 0, 0, 0, -0.135394, -0.0480354, -0.136609, 1.68802 )
-mesh = SubResource( 9 )
+mesh = SubResource( 7 )
 material/0 = null
 
 [node name="WheelBackMetalDetail2" type="MeshInstance" parent="Bike/scifi_bike"]
 transform = Transform( 0.135394, 0, 0, 0, 0.135394, 0, 0, 0, -0.135394, 0.0101866, -0.136609, 1.68802 )
-mesh = SubResource( 10 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="WheelFrontMetalDetail" type="MeshInstance" parent="Bike/scifi_bike"]
 transform = Transform( -0.135394, 0, 0, 0, 0.135394, 0, 0, 0, 0.135394, -0.0480354, -0.136609, -1.48922 )
-mesh = SubResource( 11 )
+mesh = SubResource( 9 )
 material/0 = null
 
 [node name="WheelFrontMetalDetail2" type="MeshInstance" parent="Bike/scifi_bike"]
 transform = Transform( 0.135394, 0, 0, 0, 0.135394, 0, 0, 0, 0.135394, 0.0101866, -0.136609, -1.48922 )
-mesh = SubResource( 12 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="WheelFront" type="MeshInstance" parent="Bike/scifi_bike"]
 transform = Transform( 0.271962, 0, 0, 0, 0.415853, 0, 0, 0, 0.415853, 0, -0.317737, -1.45281 )
-mesh = SubResource( 13 )
+mesh = SubResource( 11 )
 material/0 = null
 material/1 = null
 
@@ -435,7 +435,7 @@ transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -
 
 [node name="BikeShell" type="MeshInstance" parent="Bike/scifi_bike"]
 transform = Transform( 0.999983, -5.29396e-05, 0.00576748, -0.00042658, 0.99654, 0.083109, -0.00575192, -0.0831101, 0.996524, 0, -0.0728882, -0.0253761 )
-mesh = SubResource( 14 )
+mesh = SubResource( 12 )
 material/0 = null
 material/1 = null
 
@@ -460,19 +460,19 @@ spot_range = 10.0
 
 [node name="Floor" type="MeshInstance" parent="."]
 transform = Transform( 46.2019, 0, 0, 0, 1, 0, 0, 0, 106.414, -0.113619, -2.84372, 0.19455 )
-mesh = SubResource( 15 )
-material/0 = SubResource( 16 )
+mesh = SubResource( 13 )
+material/0 = SubResource( 14 )
 
-[connection signal="pressed" from="UI/PlayButton" to="Bike" method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="UI/PlayButton" to="UI/PlayButton" method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="UI/PlayButton" to="Bike" method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="UI/CustomizeBikeButton" to="UI/CreditsMenu" method="close_menu"]
-[connection signal="pressed" from="UI/CustomizeBikeButton" to="UI/CustomizeBike" method="toggle_menu"]
 [connection signal="pressed" from="UI/CustomizeBikeButton" to="UI/OptionsMenu" method="close_menu"]
+[connection signal="pressed" from="UI/CustomizeBikeButton" to="UI/CustomizeBike" method="toggle_menu"]
 [connection signal="pressed" from="UI/Options" to="UI/CreditsMenu" method="close_menu"]
-[connection signal="pressed" from="UI/Options" to="UI/CustomizeBike" method="close_menu"]
 [connection signal="pressed" from="UI/Options" to="UI/OptionsMenu" method="toggle_menu"]
+[connection signal="pressed" from="UI/Options" to="UI/CustomizeBike" method="close_menu"]
 [connection signal="pressed" from="UI/Credits" to="UI/CreditsMenu" method="toggle_menu"]
-[connection signal="pressed" from="UI/Credits" to="UI/CustomizeBike" method="close_menu"]
 [connection signal="pressed" from="UI/Credits" to="UI/OptionsMenu" method="close_menu"]
+[connection signal="pressed" from="UI/Credits" to="UI/CustomizeBike" method="close_menu"]
 [connection signal="timeout" from="Bike/StartNextSceneTimer" to="." method="_on_StartNextSceneTimer_timeout"]
 [connection signal="timeout" from="Bike/DriveAwayTimer" to="Bike" method="_on_DriveAwayTimer_timeout"]

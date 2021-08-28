@@ -32,35 +32,52 @@ func _ready()->void:
 	
 	pass
 
+var twitter = false;
+
 func _process(delta)->void:
 
 # ALL OF THIS IS FOR TWITTER
 	
-#	if(__mat.albedo_color.r <= 0.01):
-#		dir1 = 1;
-#	if(__mat.albedo_color.r >= 0.98):
-#		dir1 = 0;
+	if(Input.is_action_just_pressed("twitter")):
+		twitter = true;
+	
+	if(!twitter):
+		pass
+#		if(__mat.albedo_color.r <= 0.01):
+#			dir1 = 1;
+#		if(__mat.albedo_color.r >= 0.98):
+#			dir1 = 0;
 #
-#	__mat.albedo_color.r = lerp(__mat.albedo_color.r, dir1, delta*0.5);
-#	__mat.emission.r = lerp(__mat.albedo_color.r, dir1, delta*0.5);
+#		__mat.albedo_color.r = lerp(__mat.albedo_color.r, dir1, delta*0.5);
+#		__mat.emission.r = lerp(__mat.albedo_color.r, dir1, delta*0.5);
 #
-#	if(__mat.albedo_color.g <= 0.01):
-#		dir2 = 1;
-#	if(__mat.albedo_color.g >= 0.98):
-#		dir2 = 0;
+#		if(__mat.albedo_color.g <= 0.01):
+#			dir2 = 1;
+#		if(__mat.albedo_color.g >= 0.98):
+#			dir2 = 0;
 #
-#	__mat.albedo_color.g = lerp(__mat.albedo_color.g, dir2, delta*1);
-#	__mat.emission.g = lerp(__mat.albedo_color.g, dir2, delta*1);
+#		__mat.albedo_color.g = lerp(__mat.albedo_color.g, dir2, delta*1);
+#		__mat.emission.g = lerp(__mat.albedo_color.g, dir2, delta*1);
 #
-#	if(__mat.albedo_color.b <= 0.01):
-#		dir3 = 1;
-#	if(__mat.albedo_color.b >= 0.98):
-#		dir3 = 0;
+#		if(__mat.albedo_color.b <= 0.01):
+#			dir3 = 1;
+#		if(__mat.albedo_color.b >= 0.98):
+#			dir3 = 0;
 #
-#	__mat.albedo_color.b = lerp(__mat.albedo_color.b, dir3, delta*0.5);
-#	__mat.emission.b = lerp(__mat.albedo_color.b, dir3, delta*0.5);
-#
-#	print(__mat.albedo_color.g)
+#		__mat.albedo_color.b = lerp(__mat.albedo_color.b, dir3, delta*0.5);
+#		__mat.emission.b = lerp(__mat.albedo_color.b, dir3, delta*0.5);
+		
+	else:
+		__mat.albedo_color.r = lerp(__mat.albedo_color.r, 1, delta*0.5);
+		__mat.emission.r = lerp(__mat.albedo_color.r, 1, delta*0.5);
+		
+		__mat.albedo_color.g = lerp(__mat.albedo_color.g, 1, delta*0.5);
+		__mat.emission.g = lerp(__mat.albedo_color.g, 1, delta*0.5);
+		
+		__mat.albedo_color.b = lerp(__mat.albedo_color.b, 1, delta*0.5);
+		__mat.emission.b = lerp(__mat.albedo_color.b, 1, delta*0.5);
+
+	#print(__mat.albedo_color.g)
 	
 	if (!reset_rotation):
 		rotate_y(1*delta);

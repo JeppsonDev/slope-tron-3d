@@ -6,7 +6,7 @@
 [node name="CubeFloor" instance=ExtResource( 2 )]
 
 [node name="SpeedBoost" parent="." index="2" instance=ExtResource( 1 )]
-transform = Transform( -1.09278e-07, 0, -2.5, -1.19209e-07, 2.5, 1.42109e-14, 2.5, 2.98023e-08, -1.09278e-07, 0, 32.5987, 39.4576 )
+transform = Transform( -1.09278e-07, 0, -2.5, -2.38419e-07, 2.5, 2.13163e-14, 2.5, 2.98023e-08, -1.09278e-07, -0.824902, 32.5879, 39.7516 )
 
 [node name="SpeedBoost2" parent="." index="3" instance=ExtResource( 1 )]
 transform = Transform( -1.09278e-07, 0, -2.5, -1.19209e-07, 2.5, 1.42109e-14, 2.5, 2.98023e-08, -1.09278e-07, 0, 32.6417, -25.5331 )

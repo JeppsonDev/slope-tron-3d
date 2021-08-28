@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/models/bike/Base.material" type="Material" id=1]
 [ext_resource path="res://src/gameobjects/Bike/Bike.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/prefabs/bike/scifi_bike.gd" type="Script" id=6]
 [ext_resource path="res://assets/models/bike/Wheel.material" type="Material" id=7]
 [ext_resource path="res://assets/models/bike/Wheel_001.material" type="Material" id=8]
+[ext_resource path="res://common/Trail3D/Trail3D.gd" type="Script" id=9]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube.007"
@@ -300,6 +301,17 @@ mesh = SubResource( 11 )
 material/0 = null
 material/1 = null
 
+[node name="Trail3D" type="ImmediateGeometry" parent="scifi_bike/BikeShell"]
+transform = Transform( 0.271958, -0.00116676, -0.00209562, -1.43974e-05, 0.361463, -0.205618, 0.00156853, 0.205615, 0.361457, -0.0128185, 0.606854, 2.22808 )
+material_override = ExtResource( 3 )
+script = ExtResource( 9 )
+length = 50.0
+max_radius = 0.0
+density_around = 2
+shape = 0.353555
+
+[node name="Timer" type="Timer" parent="scifi_bike/BikeShell/Trail3D"]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="scifi_bike"]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -340,3 +352,5 @@ bus = "SFX"
 
 [node name="Thump" type="AudioStreamPlayer" parent="."]
 volume_db = -5.0
+
+[connection signal="timeout" from="scifi_bike/BikeShell/Trail3D/Timer" to="scifi_bike/BikeShell/Trail3D" method="_on_Timer_timeout"]

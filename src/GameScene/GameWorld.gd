@@ -10,27 +10,32 @@ onready var __bike:Bike = get_node("Bike");
 
 # Preload Private
 var __floors_easy:Array = [
-	preload("res://src/gameobjects/CubeFloor/CubeFloor.tscn"),
+	#preload("res://src/gameobjects/CubeFloor/CubeFloor.tscn"),
 	preload("res://src/gameobjects/CubeFloor/CubeFloorWithRamp.tscn"),
 	preload("res://src/gameobjects/CubeFloor/CubeFloorWithSpeedBoost.tscn"),
+	preload("res://src/gameobjects/CubeFloor/CubeFloorStraightCurve.tscn"),
+	preload("res://src/gameobjects/CubeFloor/CubeFloorLean.tscn"),
 ];
 
 var __floors_med:Array = [
 	preload("res://src/gameobjects/CubeFloor/CubeFloor.tscn"),
 	preload("res://src/gameobjects/CubeFloor/CubeFloorWithRamp.tscn"),
 	preload("res://src/gameobjects/CubeFloor/CubeFloorWithSpeedBoost.tscn"),
-	preload("res://src/gameobjects/CubeFloor/CubeFloorTriple.tscn"),
+	preload("res://src/gameobjects/CubeFloor/CubeFloorSlope2.tscn"),
 	preload("res://src/gameobjects/CubeFloor/CubeFloorBigLeap.tscn"),
+	preload("res://src/gameobjects/CubeFloor/CubeFloorStraightCurve.tscn"),
+	preload("res://src/gameobjects/CubeFloor/CubeFloorLean.tscn"),
 ];
 
 var __floors_hard:Array = [
 	preload("res://src/gameobjects/CubeFloor/CubeFloor.tscn"),
 	preload("res://src/gameobjects/CubeFloor/CubeFloorWithRamp.tscn"),
 	preload("res://src/gameobjects/CubeFloor/CubeFloorWithSpeedBoost.tscn"),
-	preload("res://src/gameobjects/CubeFloor/CubeFloorSlope2.tscn"),
 	preload("res://src/gameobjects/CubeFloor/CubeFloorTriple.tscn"),
 	preload("res://src/gameobjects/CubeFloor/CubeFloorWithRoof.tscn"),
 	preload("res://src/gameobjects/CubeFloor/CubeFloorBigLeap.tscn"),
+	preload("res://src/gameobjects/CubeFloor/CubeFloorStraightCurve.tscn"),
+	preload("res://src/gameobjects/CubeFloor/CubeFloorLean.tscn"),
 ];
 
 # Fields Private
@@ -40,6 +45,7 @@ var __previous_floor_index:int = 0;
 var __platforms_went_through:int = 0;
 var __score:int = 0;
 var __dead=false;
+var __y_to_lose:float = -500;
 
 # Onready Public
 onready var bike:Bike = get_node("Bike");
@@ -55,13 +61,13 @@ func __generate_floor_index()->int:
 			val += 1;
 			__previous_floor_index = val;
 			
-	if (__score >= 2 and __score < 4):
+	if (__score >= 2 and __score < 16):
 		val = randi() % (__floors_med.size()-1);
 		if(val >= __previous_floor_index):
 			val += 1;
 			__previous_floor_index = val;
 			
-	if (__score >= 4):
+	if (__score >= 16):
 		val = randi() % (__floors_hard.size()-1);
 		if(val >= __previous_floor_index):
 			val += 1;
@@ -71,9 +77,9 @@ func __generate_floor_index()->int:
 func __get_floor(floor_index):
 	if (__score >= 0 and __score < 2):
 		return __floors_easy[floor_index];
-	if (__score >= 2 and __score < 4):
+	if (__score >= 2 and __score < 16):
 		return __floors_med[floor_index];
-	if (__score >= 4):
+	if (__score >= 16):
 		return __floors_hard[floor_index];
 
 # Spawns a floor relative to the previous floor position
@@ -111,7 +117,6 @@ func __dequeue_floors()->void:
 	print("Dequeued ", 4, " floors");
 	if(__dequeue_floor_stack.size() > 0):
 		for i in range(4, 0):
-			print(i);
 			__dequeue_floor_stack[i].queue_free();
 		#__dequeue_floor_stack.clear();
 	
@@ -136,8 +141,13 @@ func __on_player_entered_restartzone(body):
 	
 func __on_player_exited()->void:
 	__score = __score + 1;
+	__y_to_lose = $Bike.global_transform.origin.y - 500;
 	get_owner().ui.score_label.text = str(__score);
 	emit_signal("score_increased", __score);
+
+func _process(delta)->void:
+	if($Bike.global_transform.origin.y < __y_to_lose):
+		__on_player_entered_restartzone($Bike);
 
 func _ready()->void:
 	__spawn_floors(4);

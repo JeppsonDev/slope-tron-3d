@@ -8,7 +8,7 @@ signal speedup();
 const LEAN:float = 2.5;
 const ACCELERATION:float = 2.0;
 const DEACCELERATION:float = 0.5;
-const STEER_SPEED:float = 0.08;
+const STEER_SPEED:float = 0.065;
 const FALLDOWN:float = 5.0;
 const NORM_SPEED:float = 1000.0
 const SPEED_INCREASE:float = 4.5;
@@ -26,6 +26,7 @@ onready var __interaction_hitbox:Area = get_node("InteractionHitbox");
 onready var __speedboost:AudioStreamPlayer = get_node("SpeedBoost");
 onready var __tiresqueal:AudioStreamPlayer = get_node("TireSqueal");
 onready var __thump:AudioStreamPlayer = get_node("Thump");
+onready var __trail3d:Trail3D = get_node("scifi_bike/BikeShell/Trail3D");
 
 # Private Fields
 var __direction:Vector3 = Vector3();
@@ -55,6 +56,7 @@ func __on_area_enter(area:Area)->void:
 		speed += 1000;
 		emit_signal("speedup")
 		__speedboost.play();
+		__trail3d.animate();
 		
 
 func _ready()->void:
@@ -63,6 +65,7 @@ func _ready()->void:
 	assert(__backwheelraycast);
 	assert(__floordetector);
 	assert(__interaction_hitbox);
+	assert(__trail3d);
 	
 	__interaction_hitbox.connect("area_entered", self, "__on_area_enter");
 	

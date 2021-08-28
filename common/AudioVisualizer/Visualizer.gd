@@ -4,6 +4,8 @@ class_name Visualizer
 # Gonkee's audio visualiser for Godot 3.2 - full tutorial https://youtu.be/AwgSICbGxJM
 # If you use this, I would prefer if you gave credit to me and my channel
 
+export(Gradient) var __gradient;
+
 onready var spectrum = AudioServer.get_bus_effect_instance(2, 0)
 
 var definition = 20
@@ -19,11 +21,18 @@ var accel = 20
 var histogram = []
 
 func _ready():
+	for i in range(definition):
+		get_child(i).get_active_material(0).emission = __gradient.interpolate((float(0)/float(100)));
+	get_parent().get_parent().connect("score_increased", self, "__on_score_increased");
 	max_db += Application.main_music.volume_db
 	min_db += Application.main_music.volume_db
 	
 	for i in range(definition):
 		histogram.append(0)
+		
+func __on_score_increased(score)->void:
+	for i in range(definition):
+		get_child(i).get_active_material(0).emission = __gradient.interpolate((float(score)/float(100)));
 
 func _process(delta):
 	var freq = min_freq

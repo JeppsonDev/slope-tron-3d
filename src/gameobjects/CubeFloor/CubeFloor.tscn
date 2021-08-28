@@ -6,12 +6,13 @@
 [ext_resource path="res://src/gameobjects/CubeFloor/CubeFloorAddons/ScoreZone.tscn" type="PackedScene" id=5]
 
 [sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 1, 1.07238 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 92.745, 67.3254, 9.532 )
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 800, 50, 800 )
+extents = Vector3( 0, 0, 0 )
 
 [node name="CubeFloor" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 0.951057, 0.463526, 0, -0.309017, 1.42658, 0, 0, 0 )
@@ -47,8 +48,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -84.626 )
 transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, -1.49012e-08, 1, 0, 0, 0 )
 
 [node name="RestartZone" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, -2.98023e-08, 1, 0, -188.067, -40.7379 )
+transform = Transform( 1, 0, 0, 0, 1, -5.96046e-08, 0, -2.98023e-08, 1, 0, -188.067, -40.7379 )
+collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="RestartZone"]
 shape = SubResource( 3 )
+
 [connection signal="body_entered" from="ScoreZone" to="." method="__on_player_entered_scorezone"]
