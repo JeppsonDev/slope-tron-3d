@@ -59,6 +59,13 @@ func __on_area_enter(area:Area)->void:
 		__trail3d.animate();
 		
 
+func _input(event):
+	if event is InputEventMouse and event.is_pressed():
+		__has_started = true;
+	
+	if event is InputEventKey and event.pressed:
+		__has_started = true;
+
 func _ready()->void:
 	assert(__scifi_bike);
 	assert(__frontwheelraycast);
@@ -76,10 +83,6 @@ func _ready()->void:
 	__mat.emission.r = Application.save_game.get_value("bike_emission_r");
 	__mat.emission.g = Application.save_game.get_value("bike_emission_g");
 	__mat.emission.b = Application.save_game.get_value("bike_emission_b");
-
-func _process(delta)->void:
-	if(Input.is_action_pressed("up") or Input.is_action_pressed("down") or Input.is_action_pressed("right") or Input.is_action_pressed("left")):
-		__has_started = true;
 
 func _physics_process(delta)->void:
 	if(Application.paused or Application.debug):
