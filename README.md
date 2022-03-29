@@ -1,3 +1,5 @@
 # slope-tron-3d
 
-A 3D game made in godot in around 2 weeks. The purpose was to start & finish a game using the godot engine
+![alt text](https://i.imgur.com/gGNUyOj.png)
+
+Slopetron is an action bike racing game created in two weeks in order to start and finish a project in the godot engine. 
